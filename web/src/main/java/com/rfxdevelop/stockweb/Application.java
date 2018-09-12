@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication(scanBasePackages = "com.rfxdevelop.stockweb")
-@ServletComponentScan(basePackages = "com.rfxdevelop.basicmvc.filter")
-@MapperScan("com.rfxdevelop.basicmvc.dao")
+@ServletComponentScan(basePackages = "com.rfxdevelop.stockweb.filter")
+@MapperScan("com.rfxdevelop.stockweb.dao")
 public class Application {
 
     public static void main(String[] args) {

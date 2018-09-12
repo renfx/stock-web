@@ -67,4 +67,4 @@ spring.datasource.druid.url：数据库连接地址
 配置 安装编译器插件lombok
 > 若安装插件后编译依然报错，在 idea 中，File -> Settings -> Build.Execution,Deployment -> Annotation Processors 中的 Enable annotation processing 打勾。同时确保File -> Settings -> Build.Execution,Deployment -> Java Complier 中的 Project bytecode version 选中JDK的版本
 
-然后从com.rfxdevelop.basicmvc.DevelopApplication启动项目
+然后从com.rfxdevelop.stockweb.Application启动项目
