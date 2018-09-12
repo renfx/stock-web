@@ -10,6 +10,7 @@
 	<modules>
 		<module>common</module>
 		<module>web</module>
+
 	</modules>
 
 	<name>parent</name>
@@ -24,17 +25,44 @@
 
 
 	<properties>
+
 		<parent.version>2.0.3.RELEASE</parent.version>
 		<poi.version>3.17</poi.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
+		<!--<plugin>-->
+			<!--<groupId>org.apache.maven.plugins</groupId>-->
+			<!--<artifactId>maven-install-plugin</artifactId>-->
+			<!--<executions>-->
+				<!--<execution>-->
+					<!--<id>install-external</id>-->
+					<!--<phase>clean</phase>-->
+					<!--<configuration>-->
+						<!--<file>${project.basedir}/lib/renfx-utils-1.0-SNAPSHOT.jar</file>-->
+						<!--<repositoryLayout>default</repositoryLayout>-->
+						<!--<groupId>com.rfxdevelop</groupId>-->
+						<!--<artifactId>renfx-utils</artifactId>-->
+						<!--<version>1.0-SNAPSHOT</version>-->
+						<!--<packaging>jar</packaging>-->
+						<!--<generatePom>true</generatePom>-->
+					<!--</configuration>-->
+					<!--<goals>-->
+						<!--<goal>install-file</goal>-->
+					<!--</goals>-->
+				<!--</execution>-->
+			<!--</executions>-->
+		<!--</plugin>-->
 	</properties>
 
 	<dependencyManagement>
+
 		<dependencies>
+
 			<dependency>
+
 				<groupId>com.rfxdevelop</groupId>
 				<artifactId>renfx-utils</artifactId>
 				<version>1.0-SNAPSHOT</version>
