@@ -1,7 +1,7 @@
 package com.rfxdevelop.stockweb.filter;
 
-import com.renfxdevelop.utils.copy.sql.SqlCheckUtils;
-import com.renfxdevelop.utils.original.request.RequestParamUtil;
+import com.rfxdevelop.utils.copy.sql.SqlCheckUtils;
+import com.rfxdevelop.utils.original.request.RequestParamUtil;
 import org.springframework.core.annotation.Order;
 
 import javax.servlet.*;
@@ -24,7 +24,6 @@ public class AccessAllowFilter implements Filter{
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
-        HttpServletRequest request = (HttpServletRequest)servletRequest;
         //接受跨域请求
         response.setHeader("Access-Control-Allow-Origin","*");
         Map<String, String> params = RequestParamUtil.getParams(servletRequest);

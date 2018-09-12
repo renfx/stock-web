@@ -1,7 +1,7 @@
 package com.rfxdevelop.stockweb.controller;
 
 import com.alibaba.druid.support.json.JSONUtils;
-import com.renfxdevelop.utils.original.request.RequestParamUtil;
+import com.rfxdevelop.utils.original.request.RequestParamUtil;
 import com.rfxdevelop.stockweb.dao.dynamic.IMapper;
 import com.rfxdevelop.stockweb.dao.dynamic.exception.MapperParamException;
 import com.rfxdevelop.stockweb.model.Result;
