@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rfxdevelop.stockweb.dao.dynamic.IMapper" >
+
+
+  <sql id="filterRule">
+    WHERE 1=1
+    <if test="whereList!=null">
+      <foreach collection="whereList" item="item" open="" close="" separator=" ">
+        AND `${item.key}` ${item.separator} #{item.value}
+      </foreach>
+    </if>
+  </sql>
+
+  <sql id="selectFrom">
+    SELECT
+    <if test="columns!=null and columns.size()!=0">
+      <foreach collection="columns" item="column" open="`" separator="," close="`">
+        ${column}
+      </foreach>
+    </if>
+    <if test="columns==null or columns.size()==0">
+      *
+    </if>
+    FROM `${tableName}`
+    <include refid="filterRule"/>
+  </sql>
+
+  <select id="select" resultType="java.util.LinkedHashMap">
+    <include refid="selectFrom"/>
+    <if test="pageQuery!=null and pageQuery.orderBy != null">
+      ORDER BY `${pageQuery.orderBy}` ${pageQuery.orderType}
+    </if>
+    <if test="pageQuery!=null and pageQuery.pageNo != null and pageQuery.pageSize != null">
+      LIMIT ${(pageQuery.pageNo-1)*pageQuery.pageSize}, ${pageQuery.pageSize}
+    </if>
+
+  </select>
+  <select id="selectCount" resultType="Long">
+    select count(*) from (
+    <include refid="selectFrom"/>
+    ) t
+
+  </select>
+
+  <update id="update">
+    update `${tableName}` SET 
+    <foreach collection="modifyMap" index="key" item="value" open="" separator="," close="">
+      `${key}` = #{value}
+    </foreach>
+    <include refid="filterRule"/>
+  </update>
+
+  <delete id="delete">
+    delete from `${tableName}`
+    <include refid="filterRule"/>
+  </delete>
+  
+  <insert id="insert">
+    insert into `${tableName}`
+    <foreach collection="insertMap" index="key" item="value" open="(" separator="," close=")">
+      `${key}`
+    </foreach>
+    values
+    <foreach collection="insertMap" index="key" item="value" open="(" separator="," close=")">
+      #{value}
+    </foreach>
+  </insert>
+</mapper>
